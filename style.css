@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-.part-result {
+.part-display {
     text-align: right;
     padding: 10px;
     font-size: 40px;
@@ -31,6 +31,10 @@ button {
 
 button:active {
     background: #f5f6fa;
+}
+
+button:hover {
+    background: #353b48de;
 }
 
 .part-calc {

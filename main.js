@@ -37,23 +37,37 @@ function smallText() {
 
 // calculation result
 function init() {
-    const parsed = parseInt(display.textContent);
-    let txt = display.textContent.indexOf('+');
-    let removeIndex = txt+1;
-    const str = display.textContent;
-    const indexx = str.charAt(removeIndex);
-    if (indexx == 0) {
-        const removeZero = str.replace('0', '');
-        const result = eval(removeZero);
-        display.textContent = result;
+    let inputtedOperator = display.textContent.indexOf('+');
+    let removeIndex = inputtedOperator+1;
+    const currentNumber = display.textContent;
+    const findZero = currentNumber.charAt(removeIndex);
+    let result;
+    if (findZero == 0) {
+        const removeZero = currentNumber.replace('0', '');
+        try {
+            result = eval(removeZero);
+            display.textContent = result;
+        } catch (error) {
+            alert('피연산자의 첫 숫자 0을 제거하세요.');
+        }
     } else {
-        const result = eval(display.textContent);
-        display.textContent = result;
+        // try {
+            result = eval(display.textContent).toString();
+            const dotIndex = result.indexOf('.');
+            if (result.charAt(dotIndex) == '.') {
+    
+                display.textContent = eval(result).toFixed(4);
+            } else {
+                display.textContent = result;
+            }
+        // } catch (error) {
+        //     alert('피연산자의 첫 숫자 0을 제거하세요.');
+        // }
     }
 }
 
 // Prevent Duplication Input
-function count(key) {
+function preventDuplication(key) {
     const text = display.textContent;
     let search = text.indexOf(key);
     let countNum = 0;
@@ -84,6 +98,7 @@ const onKeyDown = addEventListener('keydown', (e) => {
             }
             display.textContent += keyName;
     }
+
     if (display.textContent == 0) {
         return;
     } else if (keyName == '+' || keyName == '-' || keyName == '*' || keyName == '/' || keyName == '.' || keyName == 'Enter' || keyName == 'Escape' || keyName == 'Backspace') {
@@ -110,9 +125,9 @@ const onKeyDown = addEventListener('keydown', (e) => {
                 display.textContent = 0;
                 break;
         }
-        count(keyName);
+        preventDuplication(keyName);
     }
-    console.log(keyName);
+    
     smallText();
 })
 

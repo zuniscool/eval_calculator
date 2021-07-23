@@ -51,7 +51,7 @@ function init() {
             alert('피연산자의 첫 숫자 0을 제거하세요.');
         }
     } else {
-        // try {
+        try {
             result = eval(display.textContent).toString();
             const dotIndex = result.indexOf('.');
             if (result.charAt(dotIndex) == '.') {
@@ -60,9 +60,9 @@ function init() {
             } else {
                 display.textContent = result;
             }
-        // } catch (error) {
-        //     alert('피연산자의 첫 숫자 0을 제거하세요.');
-        // }
+        } catch (error) {
+            alert('피연산자의 첫 숫자 0을 제거하세요.');
+        }
     }
 }
 

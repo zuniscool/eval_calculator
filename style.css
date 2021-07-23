@@ -13,8 +13,19 @@
 .part-display {
     text-align: right;
     padding: 10px;
-    font-size: 40px;
+    font-size: 22px;
+    height: 40px;
+    line-height: 40px;
     color: #f5f6fa;
+}
+
+.small_text {
+    text-align: right;
+    padding: 10px;
+    font-size: 18px;
+    height: 40px;
+    color: #f5f6fa;
+    word-wrap: break-word;
 }
 
 button {
@@ -35,10 +46,6 @@ button:active {
 
 button:hover {
     background: #353b48de;
-}
-
-.part-calc {
-    
 }
 
 .calc-top {

@@ -19,6 +19,7 @@
     text-align: right;
 }
 
+/* Font-size adjustment when inputted length is over 18 word. */
 .small_text {
     height: 40px;
     padding: 10px;

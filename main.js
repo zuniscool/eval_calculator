@@ -6,8 +6,7 @@ const clear = document.querySelector('.clear');
 const transform = document.querySelector('.transform');
 const percent = document.querySelector('.percent');
 
-// 숫자 입력기
-// 클릭된 버튼을 인자로 받아서 동작
+// Receives the clicked button as an argument and operates.
 function inputEvent(e) {
     const targetBtn = e.target.textContent;
 
@@ -17,8 +16,8 @@ function inputEvent(e) {
     display.textContent += targetBtn;
 }
 
-// 1. 18자 이상 입력시 글자 크기 조정
-// 2. 38자 이상 입력시 경고 메세지
+// 1. Font-size adjustment when inputted length is over 18 word.
+// 2. Display a warning message, when inputted length is 38 word.
 function smallText() {
     const currentDisplay = display.textContent.toString().length;
 
@@ -36,7 +35,7 @@ function smallText() {
     }
 }
 
-// 계산 결과
+// calculation result
 function init() {
     const parsed = parseInt(display.textContent);
     let txt = display.textContent.indexOf('+');
@@ -53,7 +52,7 @@ function init() {
     }
 }
 
-// 연산자 중복 입력 방지
+// Prevent Duplication Input
 function count(key) {
     const text = display.textContent;
     let search = text.indexOf(key);
@@ -70,7 +69,7 @@ function count(key) {
     }
 }
 
-// 키입력 계산
+// Input by a keyboard.
 const onKeyDown = addEventListener('keydown', (e) => {
     const keyName = e.key;
     const parsed = keyName.replace(/[^0-9]/g, '');
@@ -117,7 +116,7 @@ const onKeyDown = addEventListener('keydown', (e) => {
     smallText();
 })
 
-// 버튼 클릭 계산
+// Click a button
 const onClick = addEventListener('click', (e) => {
     const buttonName = e.target.classList[0];
 

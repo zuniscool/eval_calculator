@@ -45,10 +45,6 @@ button:active {
     background: #f5f6fa;
 }
 
-button:hover {
-    background: #353b48de;
-}
-
 .calc-top {
     background: #718093;
 }
@@ -59,4 +55,11 @@ button:hover {
 
 .num-zero {
     width: 104px;
+}
+
+/* only PC */
+@media (hover: hover) {
+    button:hover {
+        background: #353b48de;
+    }
 }

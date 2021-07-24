@@ -18,20 +18,20 @@ function inputEvent(e) {
 
 // 1. Font-size adjustment when inputted length is over 18 word.
 // 2. Display a warning message, when inputted length is 38 word.
-function smallText() {
-    const currentDisplay = display.textContent.toString().length;
+function adjustFontSize() {
+    const currentDisplayLength = display.textContent.toString().length;
 
-    if (currentDisplay >= 18 && currentDisplay < 39) {
+    if (currentDisplayLength >= 18 && currentDisplayLength < 39) {
         display.classList.remove('part-display');
-        display.classList.add('small_text');
-    } else if (currentDisplay >= 38) {
+        display.classList.add('adjust_font');
+    } else if (currentDisplayLength >= 38) {
         display.textContent = 0;
         alert('숫자가 너무 많습니다. AC버튼을 누르고 다시 입력하세요.')
         display.classList.add('part-display');
-        display.classList.remove('small_text');
+        display.classList.remove('adjust_font');
     } else {
         display.classList.add('part-display');
-        display.classList.remove('small_text');
+        display.classList.remove('adjust_font');
     }
 }
 
@@ -48,38 +48,38 @@ function init() {
             result = eval(removeZero);
             display.textContent = result;
         } catch (error) {
-            alert('피연산자의 첫 숫자 0을 제거하세요.');
+            alert('🚨 피연산자의 첫 숫자 0을 제거하거나, 연산자를 바르게 입력하세요.');
         }
     } else {
         try {
             result = eval(display.textContent).toString();
-            const dotIndex = result.indexOf('.');
-            if (result.charAt(dotIndex) == '.') {
+            const decimalIndex = result.indexOf('.');
+            if (result.charAt(decimalIndex) == '.') {
     
                 display.textContent = eval(result).toFixed(4);
             } else {
                 display.textContent = result;
             }
         } catch (error) {
-            alert('피연산자의 첫 숫자 0을 제거하세요.');
+            alert('🚨 피연산자의 첫 숫자 0을 제거하거나, 연산자를 바르게 입력하세요.');
         }
     }
 }
 
 // Prevent Duplication Input
 function preventDuplication(key) {
-    const text = display.textContent;
-    let search = text.indexOf(key);
-    let countNum = 0;
+    const currentDisplay = display.textContent;
+    let search = currentDisplay.indexOf(key);
+
+    let count = 0;
     while (search !== -1) {
-        countNum++;
-        search = text.indexOf(key, search + 1);
+        count++;
+        search = currentDisplay.indexOf(key, search + 1);
     }
 
-    if (countNum >= 2) {
-        const resultText = display.textContent;
-        const replaceText1 = resultText.replace(`${key}${key}`, '');
-        display.textContent = replaceText1;
+    if (count >= 2) {
+        const removeOperator = currentDisplay.replace(`${key}${key}`, '');
+        display.textContent = removeOperator;
     }
 }
 
@@ -128,15 +128,18 @@ const onKeyDown = addEventListener('keydown', (e) => {
         preventDuplication(keyName);
     }
     
-    smallText();
+    adjustFontSize();
 })
 
 // Click a button
 const onClick = addEventListener('click', (e) => {
-    const buttonName = e.target.classList[0];
+    const buttonClassName = e.target.classList[0];
+    const buttonText = e.target.textContent;
 
-
-    switch (buttonName) {
+    if (display.textContent == 0 && e.target.classList[1] == 'operator') {
+        return;
+    }
+    switch (buttonClassName) {
         case 'calc':
             inputEvent(e);
             break;
@@ -157,6 +160,7 @@ const onClick = addEventListener('click', (e) => {
         case 'equal':
             init();
     }
+    preventDuplication(buttonText);
 
-    smallText();
+    adjustFontSize();
 });

@@ -20,7 +20,7 @@
 }
 
 /* Font-size adjustment when inputted length is over 18 word. */
-.small_text {
+.adjust_font {
     height: 40px;
     padding: 10px;
     color: #f5f6fa;
@@ -45,11 +45,11 @@ button:active {
     background: #f5f6fa;
 }
 
-.calc-top {
+.fn_key {
     background: #718093;
 }
 
-.calc-right {
+.operator {
     background: #e1b12c;
 }
 

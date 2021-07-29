@@ -135,8 +135,9 @@ const onKeyDown = addEventListener('keydown', (e) => {
 const onClick = addEventListener('click', (e) => {
     const buttonClassName = e.target.classList[0];
     const buttonText = e.target.textContent;
+    const operator = e.target.classList[1];
 
-    if (display.textContent == 0 && e.target.classList[1] == 'operator') {
+    if (display.textContent == 0 && operator == 'operator') {
         return;
     }
     switch (buttonClassName) {
@@ -160,7 +161,10 @@ const onClick = addEventListener('click', (e) => {
         case 'equal':
             init();
     }
-    preventDuplication(buttonText);
+    
+    if (operator == 'operator') {
+        preventDuplication(buttonText);
+    }
 
     adjustFontSize();
 });

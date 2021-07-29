@@ -63,3 +63,41 @@ button:active {
         background: #353b48de;
     }
 }
+
+@media screen and (max-width: 375px) {
+    .container {
+        width: 360px;
+    }
+
+    .part-display {
+        height: 58px;
+        padding: 14px;
+        font-size: 32px;
+        line-height: 58px;
+    }
+
+    .adjust_font {
+        height: 58px;
+        padding: 14px;
+        color: #f5f6fa;
+        font-size: 26px;
+        text-align: right;
+        word-wrap: break-word;
+    }
+    
+    button {
+        width: 73px;
+        height: 73px;
+        margin-bottom: 6px;
+        background: #353b48;
+        border: none;
+        outline: none;
+        color: #dcdde1;
+        font-size: 32px;
+        cursor: pointer;
+    }
+
+    .num-zero {
+        width: 152px;
+    }
+}

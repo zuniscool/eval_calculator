@@ -57,6 +57,19 @@ button:active {
     width: 104px;
 }
 
+.link-github {
+    display: block;
+    margin-top: 10px;
+    color: black;
+    font-size: 40px;
+    text-align: center;
+}
+
+.link-github:hover {
+    transition: all 300ms ease-in;
+    transform: scale(1.1);
+}
+
 /* only PC */
 @media (hover: hover) {
     button:hover {

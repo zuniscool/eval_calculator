@@ -65,6 +65,10 @@ button:active {
 }
 
 @media screen and (max-width: 375px) {
+    body {
+        background-color: #7f8fa6;
+    }
+
     .container {
         width: 360px;
     }
